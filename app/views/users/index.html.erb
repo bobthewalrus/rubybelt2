@@ -1,0 +1,20 @@
+<h1>Login/Registration</h1>
+<% if flash[:msg] %>
+    <h2><%= flash[:msg] %></h2>
+<% end %>
+<form action= '/login' method='POST'>
+    <input name='authenticity_token' value='<%= form_authenticity_token %>' type="hidden">
+    <input type='text' placeholder='Insert email here' name='email' >
+    <input type='password' placeholder= 'Insert Password here' name='password'>
+    <br>
+    <input type= 'submit' value='Log In'>
+</form>
+<h1> New User?</h1>
+<form action= '/register' method='POST'>
+    <input name='authenticity_token' value= '<%= form_authenticity_token %>' type='hidden'>
+    Name:<input type='text' placeholder='Name' name='name'>
+    Email:<input type='email' placeholder='Email' name='email'>
+    Password:<input type='password' placeholder='Password must be at least 8 characters' name='password'>
+    Password Confirmation: <input type='password' placeholder='Must match password' name='password_confirmation'>
+    <input type='submit' Value='Register'>
+</form>
