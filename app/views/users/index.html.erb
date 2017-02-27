@@ -13,6 +13,7 @@
 <form action= '/register' method='POST'>
     <input name='authenticity_token' value= '<%= form_authenticity_token %>' type='hidden'>
     Name:<input type='text' placeholder='Name' name='name'>
+    Alias: <input type= 'text' placeholder='Alias' name='alias'>
     Email:<input type='email' placeholder='Email' name='email'>
     Password:<input type='password' placeholder='Password must be at least 8 characters' name='password'>
     Password Confirmation: <input type='password' placeholder='Must match password' name='password_confirmation'>

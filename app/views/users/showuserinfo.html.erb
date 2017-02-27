@@ -1,0 +1,23 @@
+<h1>Hi <%= User.find(session[:user_id]).name %>!</h1>
+<form action='/logout'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type='submit' value='Log Out'>
+</form>
+<form action='/ideas'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type='submit' value='Ideas Page'>
+</form>
+<h3>User</h3>
+<table>
+        <tr>
+            <td> Name: <%= @user1.name %> </td>
+        </tr>
+        <tr>
+            <td> Alias: <%= @user1.alias %> </td>
+        </tr>
+        <tr>
+            <td> Email: <%= @user1.email %> </td>
+        </tr>
+</table>
+<h4>Total number of posts: <%= Idea.where(user_id: @user1.id).count %></h4>
+<h4>Total number of likes: <%= Like.where(user_id: @user1.id).count %></h4>

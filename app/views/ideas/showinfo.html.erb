@@ -1,0 +1,30 @@
+<h1>Hi <%= User.find(session[:user_id]).name %>!</h1>
+<form action='/logout'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type='submit' value='Log Out'>
+</form>
+<form action='/ideas'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type='submit' value='Ideas Page'>
+</form>
+<h3>Idea</h3>
+<table>
+    <tr>
+        <td><a href='/user/<%= @ideas1.user_id %>'> <%= User.find(@ideas1.user_id).alias %></a> Says: </td>
+        <td><%= @ideas1.idea %> </td>
+
+    </tr>
+</table>
+<h3>People who like this post:</h3>
+<table>
+    <tr>
+        <td>Alias</td>
+        <td>Name</td>
+    </tr>
+    <% @users1.each do |user| %>
+    <tr>
+        <td><a href='/user/<%= user[0] %>'> <%= user[1] %></a></td>
+        <td><%= user[2] %>
+    </tr>
+    <% end %>
+</table>

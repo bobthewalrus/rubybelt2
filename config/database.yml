@@ -83,5 +83,4 @@ test:
 production:
   <<: *default
   database: login_production
-  username: ubuntu
   password: <%= ENV['LOGIN_DATABASE_PASSWORD'] %>

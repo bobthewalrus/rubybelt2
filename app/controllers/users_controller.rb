@@ -3,7 +3,7 @@ class UsersController < ApplicationController
         render 'index'
     end
     def register
-        @user=User.create(name: params[:name], email: params[:email], password: params[:password])
+        @user=User.create(name: params[:name],alias: params[:alias], email: params[:email], password: params[:password])
         if (@user.errors.any?)
             flash[:msg]=@user.errors.full_messages
         else
@@ -11,5 +11,8 @@ class UsersController < ApplicationController
         end
         redirect_to '/'
     end
-
+    def showuserinfo
+        @user1 = User.find( params[:id])
+        render "showuserinfo"
+    end
 end

@@ -1,0 +1,35 @@
+<h1>Hi <%= User.find(session[:user_id]).name %>!</h1>
+<form action='/logout'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type='submit' value='Log Out'>
+</form>
+<form action= '/createidea'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type = 'text' placeholder= 'Post something witty here...' name='idea'>
+    <input type='submit' value='Idea!'>
+</form>
+<h3>Ideas</h3>
+<table>
+    <% @ideas1.each do |idea| %>
+        <tr>
+            <td><a href='/idea/<%= idea.id %>'> <%= User.select("alias").find(idea.user_id).alias %></a> Says: </td>
+            <td><%= idea.idea %> </td>
+
+
+            <td><form action= '/createlike/<%= idea.id %>'
+                <input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+                <input type='submit' value= 'Like'>
+            </form></td>
+
+
+
+            <%if idea.user_id == session[:user_id] %>
+                <td><form action= '/deleteidea/<%= idea.id %>'>
+                    <input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+                    <input type='submit' value= 'Delete'>
+                </form></td>
+            <% end %>
+            <td><a href='/idea/<%= idea.id %>'><%= Like.where(idea_id: idea.id).count %> People </a>like this </td>
+        </tr>
+    <% end %>
+</table>

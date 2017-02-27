@@ -3,6 +3,12 @@ Rails.application.routes.draw do
     post '/register' => 'users#register'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
+    get '/ideas' => 'ideas#display'
+    get '/createidea' => 'ideas#make'
+    get '/deleteidea/:id' => 'ideas#delete'
+    get '/idea/:id' => 'ideas#showinfo'
+    get '/user/:id' => 'users#showuserinfo'
+    get '/createlike/:id' => 'likes#addlike'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
